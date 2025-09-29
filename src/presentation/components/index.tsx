@@ -1,4 +1,4 @@
 export * from "./Coupons";
-export * from "./ProgressBar";
+export * from "./UI/ProgressBar";
 export * from "./TabBar";
 export * from "./UI";

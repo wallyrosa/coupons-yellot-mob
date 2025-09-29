@@ -9,14 +9,14 @@ import Animated, {
 
 interface ProgressBarProps {
   className?: string;
-  label: string;
   progress: number;
+  testID?: string;
 }
 
 export const ProgressBar = ({
   className,
-  label,
   progress = 0,
+  testID,
 }: ProgressBarProps) => {
   let progressWidth = progress;
   if (progress > 100) {
@@ -36,6 +36,7 @@ export const ProgressBar = ({
 
   return (
     <View
+      testID={testID}
       className={cn("relative gap-2 w-full rounded-full bg-primary", className)}
     >
       <View className="absolute top-0 left-0 w-full h-2 rounded-full min-h-2 bg-secondary" />

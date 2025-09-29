@@ -7,6 +7,7 @@ export const filterByRange = (coupons: Coupons[], days: number) => {
 
   return coupons.filter((coupon) => {
     const expireDate = new Date(coupon.expire_at);
-    return isAfter(expireDate, startDate) && isBefore(expireDate, today);
+    // Inclui cupons que expiram entre startDate (inclusive) e today (exclusive)
+    return !isBefore(expireDate, startDate) && isBefore(expireDate, today);
   });
 };
