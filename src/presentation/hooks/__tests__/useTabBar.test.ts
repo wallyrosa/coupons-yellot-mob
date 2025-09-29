@@ -2,8 +2,6 @@ import { renderHook, act } from "@testing-library/react-native";
 import { useTabBar } from "../useTabBar";
 import { tabIcons } from "@/utils";
 
-// Mock do react-native-reanimated já está no setup.ts
-
 describe("useTabBar", () => {
   const mockNavigation = {
     emit: jest.fn(),
@@ -164,8 +162,7 @@ describe("useTabBar", () => {
         useTabBar(mockNavigation as any, mockState as any)
       );
 
-      // Dimensões padrão: width: 20, routes: 4
-      expect(result.current.buttonWidth).toBe(20 / 4); // 5
+      expect(result.current.buttonWidth).toBe(20 / 4);
     });
 
     it("deve atualizar buttonWidth quando dimensions mudam", () => {
@@ -177,7 +174,7 @@ describe("useTabBar", () => {
         result.current.setDimensions({ width: 100, height: 50 });
       });
 
-      expect(result.current.buttonWidth).toBe(100 / 4); // 25
+      expect(result.current.buttonWidth).toBe(100 / 4);
     });
   });
 

@@ -36,8 +36,6 @@ describe("Separator Component", () => {
     it("deve funcionar sem testID", () => {
       const { getByTestId } = render(<Separator />);
 
-      // Como não há testID, vamos verificar se o componente renderiza
-      // através da estrutura do componente
       expect(getByTestId).toBeDefined();
     });
   });
@@ -48,7 +46,6 @@ describe("Separator Component", () => {
 
       const element = getByTestId("separator");
       expect(element).toBeTruthy();
-      // As classes CSS específicas seriam verificadas através das props do componente
     });
   });
 });

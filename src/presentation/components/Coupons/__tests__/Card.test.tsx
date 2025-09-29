@@ -106,10 +106,8 @@ describe("Card Component", () => {
 
       render(<Card />);
 
-      // Verifica se o ProgressBar recebe o progresso correto
       const progressBar = screen.getByTestId("progress-bar");
       expect(progressBar).toBeTruthy();
-      // Note: O valor exato do progresso seria verificado através das props do ProgressBar
     });
   });
 

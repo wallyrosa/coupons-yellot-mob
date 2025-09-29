@@ -18,7 +18,6 @@ describe("API Yellot", () => {
   });
 
   it("deve criar uma instância do axios com a URL base correta", () => {
-    // Importa o módulo após o mock
     const { apiYellot } = require("../api");
 
     expect(apiYellot).toBeDefined();
@@ -26,7 +25,6 @@ describe("API Yellot", () => {
   });
 
   it("deve ter interceptors configurados", () => {
-    // Importa o módulo após o mock
     const { apiYellot } = require("../api");
 
     expect(apiYellot).toBeDefined();

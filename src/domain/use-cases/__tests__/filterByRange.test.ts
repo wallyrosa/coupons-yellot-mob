@@ -10,7 +10,7 @@ describe("filterByRange", () => {
           code: "EXPIRED_6_DAYS_AGO",
           type: "percentage",
           value: 10,
-          expire_at: subDays(today, 6).toISOString(), // 6 dias atrás
+          expire_at: subDays(today, 6).toISOString(),
           is_active: true,
           max_use: 100,
           used: 0,
@@ -20,7 +20,7 @@ describe("filterByRange", () => {
           code: "EXPIRED_3_DAYS_AGO",
           type: "percentage",
           value: 15,
-          expire_at: subDays(today, 3).toISOString(), // 3 dias atrás
+          expire_at: subDays(today, 3).toISOString(),
           is_active: true,
           max_use: 50,
           used: 10,
@@ -30,7 +30,7 @@ describe("filterByRange", () => {
           code: "EXPIRED_10_DAYS_AGO",
           type: "fixed",
           value: 50,
-          expire_at: subDays(today, 10).toISOString(), // 10 dias atrás
+          expire_at: subDays(today, 10).toISOString(),
           is_active: true,
           max_use: 200,
           used: 50,
@@ -134,7 +134,7 @@ describe("filterByRange", () => {
           code: "EXPIRED_JUST_BEFORE_7_DAYS",
           type: "percentage",
           value: 15,
-          expire_at: subDays(today, 7.1).toISOString(), // Pouco antes do limite
+          expire_at: subDays(today, 7.1).toISOString(),
           is_active: true,
           max_use: 50,
           used: 10,
@@ -144,7 +144,6 @@ describe("filterByRange", () => {
 
       const result = filterByRange(coupons, 7);
 
-      // Apenas o cupom que expira exatamente 7 dias atrás deve ser incluído
       expect(result).toHaveLength(1);
       expect(result[0].code).toBe("EXPIRED_EXACTLY_7_DAYS_AGO");
     });
@@ -166,7 +165,6 @@ describe("filterByRange", () => {
 
       const result = filterByRange(coupons, 1);
 
-      // Cupons que expiram hoje não devem ser incluídos (isAfter e isBefore são exclusivos)
       expect(result).toHaveLength(0);
     });
 
@@ -245,7 +243,6 @@ describe("filterByRange", () => {
         },
       ];
 
-      // A função deve lidar com datas inválidas sem quebrar
       expect(() => filterByRange(coupons, 7)).not.toThrow();
     });
   });

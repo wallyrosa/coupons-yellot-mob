@@ -84,14 +84,12 @@ describe("useFilterDays", () => {
     it("deve remover filtro quando seleciona o mesmo dia", () => {
       const { result } = renderHook(() => useFilterDays());
 
-      // Primeiro seleciona um dia
       act(() => {
         result.current.handleSelectDay(1, 7);
       });
 
       expect(result.current.selectedDay).toBe(1);
 
-      // Depois seleciona o mesmo dia novamente
       act(() => {
         result.current.handleSelectDay(1, 7);
       });
@@ -121,14 +119,12 @@ describe("useFilterDays", () => {
     it("deve resetar cupons e selectedDay", () => {
       const { result } = renderHook(() => useFilterDays());
 
-      // Primeiro aplica um filtro
       act(() => {
         result.current.handleSelectDay(1, 7);
       });
 
       expect(result.current.selectedDay).toBe(1);
 
-      // Depois remove o filtro
       act(() => {
         result.current.handleRemoveFilter();
       });
@@ -153,7 +149,6 @@ describe("useFilterDays", () => {
     it("deve funcionar corretamente com múltiplas operações", () => {
       const { result } = renderHook(() => useFilterDays());
 
-      // Aplica filtro de 7 dias
       act(() => {
         result.current.handleSelectDay(1, 7);
       });
@@ -161,7 +156,6 @@ describe("useFilterDays", () => {
       expect(result.current.selectedDay).toBe(1);
       expect(mockSetCoupons).toHaveBeenCalledTimes(1);
 
-      // Muda para filtro de 15 dias
       act(() => {
         result.current.handleSelectDay(2, 15);
       });
@@ -169,7 +163,6 @@ describe("useFilterDays", () => {
       expect(result.current.selectedDay).toBe(2);
       expect(mockSetCoupons).toHaveBeenCalledTimes(2);
 
-      // Remove filtro
       act(() => {
         result.current.handleRemoveFilter();
       });

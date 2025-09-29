@@ -36,7 +36,6 @@ export const renderWithQueryClient = (
   };
 };
 
-// Helper para aguardar queries assíncronas
 export const waitForQueryToFinish = () => {
   return new Promise((resolve) => setTimeout(resolve, 0));
 };

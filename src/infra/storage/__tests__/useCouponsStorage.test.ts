@@ -4,7 +4,6 @@ import { mockCoupons } from "../../../tests/mocks/coupons";
 
 describe("useCouponsStorage", () => {
   beforeEach(() => {
-    // Reset do store antes de cada teste
     const { result } = renderHook(() => useCouponsStorage());
     act(() => {
       result.current.setCoupons([]);

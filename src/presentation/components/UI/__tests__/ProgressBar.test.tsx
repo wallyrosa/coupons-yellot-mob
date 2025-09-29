@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react-native";
 import { ProgressBar } from "../ProgressBar";
 
-// Mock do react-native-reanimated já está no setup.ts
-
 describe("ProgressBar Component", () => {
   describe("Renderização", () => {
     it("deve renderizar com progresso 0", () => {

@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react-native";
 import React from "react";
 import { useCouponsQuery } from "../useCouponsQuery";
-import { mockCoupons, mockApiResponse } from "../../../tests/mocks/coupons";
+import { mockCoupons } from "../../../tests/mocks/coupons";
 
 // Mock do repository
 const mockGetCoupons = jest.fn();
@@ -11,12 +11,6 @@ jest.mock("../../../infra/repositories", () => ({
     getCoupons: mockGetCoupons,
   })),
 }));
-
-import { couponsRepository } from "../../../infra/repositories";
-
-const mockedRepository = couponsRepository as jest.MockedFunction<
-  typeof couponsRepository
->;
 
 describe("useCouponsQuery", () => {
   let queryClient: QueryClient;
@@ -129,10 +123,10 @@ describe("useCouponsQuery", () => {
       expect(result.current.isSuccess).toBe(true);
     });
 
-    rerender();
+    rerender(wrapper({ children: <></> }));
 
     // Assert
     expect(result.current.data).toEqual(mockCoupons);
-    expect(mockGetCoupons).toHaveBeenCalledTimes(1); // Não deve chamar novamente
+    expect(mockGetCoupons).toHaveBeenCalledTimes(1);
   });
 });
