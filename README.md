@@ -47,6 +47,7 @@ Este projeto utiliza a **Arquitetura Onion (Clean Architecture)** para garantir 
 ```
 src/
 ├── app/                    # Configuração do Expo Router
+│   ├── index.tsx           # Index raiz indicando para Coupons
 │   ├── _layout.tsx         # Layout raiz com providers
 │   └── navigation/         # Navegação entre telas
 ├── domain/                 # Regras de negócio (camada central)
@@ -87,6 +88,8 @@ src/
 - **Tailwind CSS** - Estilização
 - **Prettier** - Formatação de código
 - **ESLint** - Análise de código
+- **Jest ^30.2.0** - Framework de testes
+- **Testing Library** - Testes de componentes
 
 ## 🎨 Sistema de Design
 
@@ -112,35 +115,79 @@ const colors = {
 ## 📱 Funcionalidades
 
 ### ✅ Implementadas
-- [x] Listagem de cupons com agrupamento por mês
-- [x] Sistema de loading com skeleton
-- [x] Pull-to-refresh
-- [x] Tratamento de erros com retry automático
-- [x] Navegação por abas
-- [x] Filtros por período
-- [x] Toast notifications
-- [x] Armazenamento local
+- [x] **Tela de Cupons**: Listagem completa com agrupamento por mês
+- [x] **Sistema de Loading**: Skeleton com animação nativa
+- [x] **Pull-to-refresh**: Atualização manual dos dados
+- [x] **Tratamento de Erros**: Retry automático e notificações
+- [x] **Navegação por Abas**: TabBar customizada com animações
+- [x] **Filtros por Período**: Filtro por dias (7, 15, 30 dias)
+- [x] **Toast Notifications**: Feedback visual para usuário
+- [x] **Armazenamento Local**: Cache com Zustand
+- [x] **Arquitetura Onion**: Separação clara de responsabilidades
+- [x] **Testes Completos**: Cobertura de componentes, hooks e casos de uso
 
 ## 🧪 Testes
 
+O projeto possui uma estrutura completa de testes com alta cobertura:
+
+### Comandos Disponíveis
 ```bash
-# Executar testes
+# Executar todos os testes
 pnpm test
 
-# Testes com coverage
+# Executar testes em modo watch (desenvolvimento)
+pnpm test:watch
+
+# Executar testes com cobertura
 pnpm test:coverage
+
+# Executar testes para CI/CD
+pnpm test:ci
 ```
+
+### Cobertura de Testes
+- ✅ **Funções Utilitárias**: `firstLetterToUppercase`, `mergeCss`
+- ✅ **Serviços de API**: Cliente HTTP, repositórios
+- ✅ **Gerenciamento de Estado**: Zustand stores
+- ✅ **Hooks Customizados**: `useCouponsQuery`, `useFilterDays`, `useTabBar`
+- ✅ **Componentes React**: `Card`, `ProgressBar`, `Separator`
+- ✅ **Casos de Uso**: `filterByRange`
+
+### Tecnologias de Teste
+- **Jest ^30.2.0** - Framework de testes
+- **@testing-library/react-native** - Testes de componentes
+- **@testing-library/jest-native** - Matchers adicionais
+- **React Test Renderer** - Renderização de componentes
+
+> 📋 Para mais detalhes sobre testes, consulte [src/tests/README.md](src/tests/README.md)
 
 ## 📦 Build
 
+### Desenvolvimento
 ```bash
-# Build para produção
-expo build:android
-expo build:ios
+# Iniciar servidor de desenvolvimento
+pnpm start
+
+# Executar no Android
+pnpm android
+
+# Executar no iOS
+pnpm ios
+
+# Executar na Web
+pnpm web
+```
 
 # Build local
-eas build --platform android
-eas build --platform ios
+```bash
+# Executa o build
+pnpx expo prebuild
+
+# Executar no Android
+pnpx expo run:android
+
+# Executar no IOS
+pnpx expo run:ios
 ```
 
 ## 👥 Equipe
